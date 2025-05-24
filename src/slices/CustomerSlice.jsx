@@ -2,17 +2,20 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = [];
 const CustomerSlice = createSlice({
-    name:'Customer ',
+    name: 'Customer',
     initialState,
-    reducers  : {
-        addCustomer(state,action){
-            state.push(action.payload)
+    reducers: {
+        addCustomer(state, action) {
+            state.push(action.payload);
         },
-        resetCustomers(state){
-               return [];
+        resetCustomers() {
+            return [];
+        },
+        removeCustomer(state, action) {
+            return state.filter((id) => action.payload !== id);
         }
     }
-})
+});
 
-export const {addCustomer, resetCustomers} =CustomerSlice.actions
-export default CustomerSlice.reducer
+export const { addCustomer, resetCustomers, removeCustomer } = CustomerSlice.actions;
+export default CustomerSlice.reducer;
